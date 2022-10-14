@@ -17,7 +17,7 @@ export default class Environment {
     }
 
     setAmbientLight() {
-        this.ambientLight = new THREE.AmbientLight(0x404040);
+        this.ambientLight = new THREE.AmbientLight(0x404040, 2.2);
         this.scene.add(this.ambientLight);
         
         if(this.debug.active === true) {
@@ -28,7 +28,7 @@ export default class Environment {
     }
 
     setFog() {
-        this.fog = new THREE.Fog('#262837', 0.01, 1)
+        this.fog = new THREE.Fog('#67aad3', 1.4, 1.8)
         this.scene.fog = this.fog
 
         if(this.debug.active === true) {
@@ -37,7 +37,7 @@ export default class Environment {
             fogFolder.add(this.fog, 'far').min(1).max(5)
 
             const debugObject = {
-                fogColor: '#262837'
+                fogColor: '#67aad3'
             }
             fogFolder.addColor(debugObject, 'fogColor').onChange((color) => {
                 this.fog.color = new THREE.Color(color);

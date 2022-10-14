@@ -26,10 +26,10 @@ export default class Camera {
         this.instance = new THREE.PerspectiveCamera(35, this.sizes.width / this.sizes.height, 0.1, 100);
         this.scene.add(this.instance);
 
-        this.initalCameraPos = new THREE.Vector3(0.03, 0.56, -1.06)
+        this.initalCameraPos = new THREE.Vector3(0.2, 0.54, -1.21)
         this.instance.position.copy(this.initalCameraPos);
         
-        this.instance.rotation.set(-2.7, 0.05, 3.11, 'XYZ')
+        this.instance.rotation.set(-2.8, 0.03, 3.12, 'XYZ')
     }
 
     setControls() {
@@ -44,6 +44,7 @@ export default class Camera {
     }
 
     update() {
+        // this.controls.update();
         if(this.cursor) {
             const idealPosition = new THREE.Vector3(
                 this.initalCameraPos.x - this.cursor.x * 0.1,

@@ -15,6 +15,7 @@ export default class Sizes extends EventHandler {
             this.resize();
             this.trigger('resize');
         })
+        console.log(this);
     }
 
     resize() {

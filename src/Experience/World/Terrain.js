@@ -1,8 +1,14 @@
 import * as THREE from 'three'
-import Experience from '../Experience'
+import gsap from 'gsap'
+import {Power4} from "gsap";
 
-export default class Terrain {
+import Experience from '../Experience'
+import EventHandler from '../Utils/EventHandler';
+
+export default class Terrain extends EventHandler {
     constructor() {
+        super();
+
         this.experience = new Experience();
         this.resources = this.experience.resources.items;
 
@@ -22,5 +28,14 @@ export default class Terrain {
             this.terrainMaterial
         )
         this.experience.scene.add(this.instance)
+        this.instance.position.y = -.7
+        gsap.to(this.instance.position, {
+            y: 0, 
+            duration: 3, 
+            ease: Power4.easeInOut, 
+            onComplete: () => {
+                this.trigger('TerrainReady');
+            }
+        } )
     }
 }

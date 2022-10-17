@@ -34,15 +34,10 @@ export default class Points {
             },
         ]
 
-        // const cubeGeo = new THREE.BoxGeometry(.01, .01, .01)
-        // const cubeMat = new THREE.MeshBasicMaterial({color: 0xff0000})
-        // for(const point of this.points) {
-        //     const cubeMesh = new THREE.Mesh(cubeGeo, cubeMat);
-        //     cubeMesh.position.copy(point.position)
-
-        //     this.experience.scene.add(cubeMesh)
-        //     console.log(this.experience.scene);
-        // }
+        this.points.forEach(point => {
+            console.log(point.element.id)
+            point.element.addEventListener('click', () => this.setCartelVisible(point.element.id))
+        })
     }
 
     update() {
@@ -63,5 +58,10 @@ export default class Points {
         for(const point of this.points) {
             point.element.classList.remove('inactive');
         }
+    }
+
+    setCartelVisible(PointName) {
+        const cartel = document.getElementById('C'+ PointName)
+        cartel.classList.add('active')
     }
 }

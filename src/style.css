@@ -1,6 +1,7 @@
 body {
     margin: 0;
     overflow-x: hidden;
+    overflow-y: hidden;
 }
 
 #Experience {
@@ -28,10 +29,13 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
+
+    pointer-events: all;
 }
 
 .location.inactive {
     opacity: 0;
+    pointer-events: none;
 }
 
 .location:hover {
@@ -60,4 +64,33 @@ body {
 #Santiago {
     width: 100px;
     height: 100px;
+}
+
+.Cartel {
+    position: absolute;
+
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    width: 80vw;
+    height: 70vh;
+    background-color: white;
+
+    overflow-y: scroll;
+
+    opacity: 0;
+    pointer-events: none;
+
+    transition: opacity 1s ease-in-out;
+    will-change: opacity;
+}
+
+.GoBack:hover {
+    cursor: pointer;
+}
+
+.Cartel.active {
+    opacity: 1;
+    pointer-events: none;
 }
